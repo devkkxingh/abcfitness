@@ -1,0 +1,22 @@
+{
+  "name": "abcfitness",
+  "version": "1.0.0",
+  "description": "A comprehensive fitness class management system",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && npx prisma generate --schema=./src/prisma/schema.prisma && npx prisma db push --schema=./src/prisma/schema.prisma && cd .. && cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "info": "echo \"Backend: http://localhost:3000\" && echo \"Frontend: http://localhost:3001\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

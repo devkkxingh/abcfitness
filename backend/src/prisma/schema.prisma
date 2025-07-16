@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./prisma/dev.db"
+}
+
+model Class {
+  id         String   @id @default(uuid())
+  name       String
+  startDate  DateTime
+  endDate    DateTime
+  startTime  String
+  duration   Int
+  capacity   Int
+  instances  ClassInstance[]
+}
+
+model ClassInstance {
+  id        String   @id @default(uuid())
+  date      DateTime
+  class     Class    @relation(fields: [classId], references: [id])
+  classId   String
+  bookings  Booking[]
+}
+
+model Booking {
+  id                String   @id @default(uuid())
+  memberName        String
+  participationDate DateTime
+  classInstance     ClassInstance @relation(fields: [classInstanceId], references: [id])
+  classInstanceId   String
+}
