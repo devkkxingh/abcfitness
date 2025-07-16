@@ -102,7 +102,7 @@ The backend follows a layered architecture pattern:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/devkkxingh/abcftness.git
+   git clone https://github.com/devkkxingh/abcfitness.git
    cd abcfitness
    ```
 
